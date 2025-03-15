@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 1px red solid;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wrapper {
+  border: 1px solid black;
+  width: 70%;
+  text-align: center;
+  height: 75%;
+  box-sizing: border-box;
+}
+
+#inputs {
+  width: 50%;
+  margin: 20px auto;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
