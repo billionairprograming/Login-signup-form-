@@ -3,6 +3,13 @@
 const userName = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
+const feedback = document.getElementById("feedback");
+const emailFeedback = document.getElementById("emailfeedback");
+const passwordFeedback = document.getElementById("pwfeedback");
+const confirm = document.getElementById("confirmpassword");
+const confirmFeedback = document.getElementById("confirmedfeedback");
+
+//error varaibles
 
 // Functions and methods
 //Need a function to save the data into local storage
@@ -11,7 +18,6 @@ const password = document.getElementById("password");
 function saveData() {
   // this will save the data if every thing is correct
 
-  let emails = email.vaule;
   let passwords = password.vaule;
   // if everyhting is true then save
 }
@@ -21,7 +27,7 @@ function validateUserName() {
   //user must have a certin about of letters, have a number and symbol as well
   let username = userName.value;
   let userNameRegex = /^(?=(.*\d){2,})(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
-  const feedback = document.getElementById("feedback");
+
   //Username requierments
   const min8Char = username.length >= 8;
   const max2symb = (username.match(/\d/g) || []).length >= 2;
@@ -44,15 +50,55 @@ function validateUserName() {
   }
 }
 
-validateUserName();
-
 function vaildateEmail() {
   // user must have a @ in there email
+  // Has been tested and is correct
+  let emails = email.value;
+
+  if (!emails.includes("@")) {
+    emailFeedback.textContent = "You are missing an @";
+    emailFeedback.style.color = "red";
+  } else {
+    emailFeedback.textContent = "Great email.";
+    emailFeedback.style.color = "green";
+  }
 }
 
 function vaildatePassword() {
   // user must have a certin length and have number and symbole as well
   //when the first one is inputted correctly then the other confim pw shows up.
+  let passwords = password.value;
+  let confirms = confirm.value;
+  let passwordRegex = /^(?=(.*\d){2,})(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
+
+  const min8Chars = passwords.length >= 8;
+  const max2symbs = (passwords.match(/\d/g) || []).length >= 2;
+  const hasSpecialChars = /[!@#$%^&*]/.test(passwords);
+
+  let errorMessages = [];
+
+  if (!min8Chars) errorMessages.push("Must be at least 8 characters long.");
+  if (!max2symbs) errorMessages.push("Must include at least 2 numbers.");
+  if (!hasSpecialChars)
+    errorMessages.push("Must include at least 1 special character (!@#$%^&*).");
+
+  if (passwordRegex.test(passwords) && errorMessages.length === 0) {
+    passwordFeedback.textContent = "Nice Password.";
+    passwordFeedback.style.color = "green";
+
+    confirm.style.display = "block";
+  } else {
+    passwordFeedback.textContent = errorMessages.join(" ");
+    passwordFeedback.style.color = "red";
+  }
+
+  if (confirms !== "" && confirms !== passwords) {
+    confirmFeedback.textContent = "Passwords do not match!";
+    confirmFeedback.style.color = "red";
+  } else if (confirms !== "") {
+    confirmFeedback.textContent = "Money. All passwords match";
+    confirmFeedback.style.color = "green";
+  }
 }
 
 // inits and eventlisteners

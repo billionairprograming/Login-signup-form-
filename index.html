@@ -23,8 +23,12 @@
             <li>Must have at least 1 symbole</li>
           </ul>
         </div>
-        <input placeholder="Add Email" type="email" id="email" />
-        <input placeholder="Create Password" type="text" id="password" />
+        <input placeholder="Add Email" type="email" id="email" oninput="vaildateEmail()"/>
+        <p id="emailfeedback"></p>
+        <input placeholder="Create Password" type="text" id="password" oninput="vaildatePassword()"/>
+        <p id="pwfeedback"></p>
+        <input type="text" placeholder="Confirm password" id="confirmpassword" oninput="vaildatePassword()" style="display: none;">
+        <p id="confirmedfeedback"></p>
         <div id="pwreq">
           <h2>Password requirements</h2>
           <ul>
