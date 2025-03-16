@@ -8,20 +8,30 @@ const emailFeedback = document.getElementById("emailfeedback");
 const passwordFeedback = document.getElementById("pwfeedback");
 const confirm = document.getElementById("confirmpassword");
 const confirmFeedback = document.getElementById("confirmedfeedback");
+const submitBtn = document.getElementById("submit");
+const nameUser = document.getElementById("usersname");
+const feedbackName = document.getElementById("namefeedback");
 
 //error varaibles
 
 // Functions and methods
 //Need a function to save the data into local storage
 //
-//This is the function that works if everything is correct and saves the data
-function saveData() {
-  // this will save the data if every thing is correct
+function useName() {
+  let name = nameUser.value;
+  let nameRegex = /^[A-Za-z]+$/;
 
-  let passwords = password.vaule;
-  // if everyhting is true then save
+  if (name === "") {
+    feedbackName.textContent = "Enter your name";
+    feedbackName.style.color = "red";
+  } else if (!nameRegex.test(name)) {
+    feedbackName.textContent = "Name must have only letters into it";
+    feedbackName.style.color = "red";
+  } else {
+    feedbackName.textContent = "Awesome name";
+    feedbackName.style.color = "green";
+  }
 }
-
 //add in use case for error down below
 function validateUserName() {
   //user must have a certin about of letters, have a number and symbol as well
@@ -67,6 +77,7 @@ function vaildateEmail() {
 function vaildatePassword() {
   // user must have a certin length and have number and symbole as well
   //when the first one is inputted correctly then the other confim pw shows up.
+  //this was tested and it works
   let passwords = password.value;
   let confirms = confirm.value;
   let passwordRegex = /^(?=(.*\d){2,})(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
@@ -101,8 +112,27 @@ function vaildatePassword() {
   }
 }
 
-// inits and eventlisteners
+//This is the function that works if everything is correct and saves the data
+function saveData() {
+  // this will save the data if every thing is correct
+  // if everyhting is true then save
+  const userInfo = {
+    name: nameUser.value.trim(),
+    username: userName.value.trim(),
+    emails: email.value.trim(),
+    password: confirm.value,
+  };
 
+  localStorage.setItem("userInfo", JSON.stringify(userInfo));
+  alert("Sign-up compelted well done you can log in");
+
+  window.location.href = "login/login.html";
+}
+
+// inits and eventlisteners
 // When the button is clicked it will go to the next page and save the data
+submitBtn.addEventListener("click", saveData);
+
 //When the user clicks on the input user feild then the requirement show up.
 //Same for the password,
+//for this onclicks where added to the html.

@@ -13,32 +13,44 @@
         <p>Create a new profile</p>
       </header>
       <div id="inputs">
-        <input placeholder="Add Username" type="text" id="username" oninput="validateUserName()" />
+        <input
+          type="text"
+          placeholder="Enter name"
+          id="usersname"
+          oninput="useName()"
+        />
+        <p id="namefeedback"></p>
+        <input
+          placeholder="Add Username"
+          type="text"
+          id="username"
+          oninput="validateUserName()"
+        />
         <p id="feedback"></p>
-        <div id="requirements"
-          </h2>Username requirements:</h2>
-          <ul>
-            <li>Must have 8 charecters</li>
-            <li>Include 2 numbers</li>
-            <li>Must have at least 1 symbole</li>
-          </ul>
-        </div>
-        <input placeholder="Add Email" type="email" id="email" oninput="vaildateEmail()"/>
+        <input
+          placeholder="Add Email"
+          type="email"
+          id="email"
+          oninput="vaildateEmail()"
+        />
         <p id="emailfeedback"></p>
-        <input placeholder="Create Password" type="text" id="password" oninput="vaildatePassword()"/>
+        <input
+          placeholder="Create Password"
+          type="text"
+          id="password"
+          oninput="vaildatePassword()"
+        />
         <p id="pwfeedback"></p>
-        <input type="text" placeholder="Confirm password" id="confirmpassword" oninput="vaildatePassword()" style="display: none;">
+        <input
+          type="text"
+          placeholder="Confirm password"
+          id="confirmpassword"
+          oninput="vaildatePassword()"
+          style="display: none"
+        />
         <p id="confirmedfeedback"></p>
-        <div id="pwreq">
-          <h2>Password requirements</h2>
-          <ul>
-            <li>Must be 10 charecters</li>
-            <li>Include 2 numbers</li>
-            <li>Include at least one symbole</li>
-          </ul>
-        </div>
         <!--
-        Add in a confirmed password secion as well
+        Add in a name secion as well
         -->
       </div>
       <button id="submit">Submit</button>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login-Page</title>
+    <link href="login.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+      <h1>Log-in</h1>
+      <p>
+        Welcome to the log in page go ahead and input your username/email and
+        password.
+      </p>
+
+      <input
+        type="text"
+        placeholder="Username or email"
+        id="userlogin"
+        oninput="loginInfo()"
+      />
+      <p id="loginfeedback"></p>
+
+      <input
+        type="text"
+        placeholder="Enter password"
+        id="userpassword"
+        oninput="pwlogin()"
+      />
+      <p id="userpwfeedback"></p>
+
+      <button id="loginbtn">Log-in</button>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>
