@@ -13,9 +13,26 @@
         <p>Create a new profile</p>
       </header>
       <div id="inputs">
-        <input placeholder="Add Username" type="text" id="username" />
+        <input placeholder="Add Username" type="text" id="username" oninput="validateUserName()" />
+        <p id="feedback"></p>
+        <div id="requirements"
+          </h2>Username requirements:</h2>
+          <ul>
+            <li>Must have 8 charecters</li>
+            <li>Include 2 numbers</li>
+            <li>Must have at least 1 symbole</li>
+          </ul>
+        </div>
         <input placeholder="Add Email" type="email" id="email" />
         <input placeholder="Create Password" type="text" id="password" />
+        <div id="pwreq">
+          <h2>Password requirements</h2>
+          <ul>
+            <li>Must be 10 charecters</li>
+            <li>Include 2 numbers</li>
+            <li>Include at least one symbole</li>
+          </ul>
+        </div>
         <!--
         Add in a confirmed password secion as well
         -->
